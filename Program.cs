@@ -54,15 +54,68 @@ Console.WriteLine(ProgrammaEventi.ListaEventiToString(eventiInData));
 
 Console.WriteLine(programma);
 
-// Numero di eventi nel programma
+/* Numero di eventi nel programma
 int numeroEventi = programma.NumeroEventi();
 Console.WriteLine("Numero totale di eventi: " + numeroEventi);
 
-Console.WriteLine(programma);
+Console.WriteLine(programma);  */
 
-// Svuotamento della lista di eventi
+/* Svuotamento della lista di eventi
 programma.SvuotaEventi();
 Console.WriteLine("Lista di eventi svuotata");
 
 // Stampa del programma eventi dopo averlo svuotato
-Console.WriteLine(programma);
+Console.WriteLine(programma);  */
+
+
+
+//--------------------------------------------\\
+
+Console.Write("Inserisci il titolo del tuo programma eventi: ");
+string titolo = Console.ReadLine();
+ProgrammaEventi programma2 = new ProgrammaEventi(titolo);
+
+Console.Write("Quanti eventi vuoi aggiungere al tuo programma? ");
+int numEventi = int.Parse(Console.ReadLine());
+
+int i = 0;
+
+while (i < numEventi)
+{
+    Console.WriteLine("Inserisci i dettagli dell'evento #" + (i + 1));
+    Console.Write("Titolo: ");
+    string titoloEvento = Console.ReadLine();
+
+    Console.Write("Data (formato gg/mm/aaaa): ");
+    DateTime dataEvento = DateTime.Parse(Console.ReadLine());
+
+    Console.Write("Capacità massima: ");
+
+    int maxCapacita = Convert.ToInt32(Console.ReadLine());
+
+
+    Evento eventoNew = new Evento(titoloEvento, dataEvento, maxCapacita);
+    programma2.AggiungiEvento(eventoNew);
+
+    i++;
+}
+
+
+Console.WriteLine();
+Console.WriteLine("Numero di eventi presenti nel programma: " + programma2.NumeroEventi());
+Console.WriteLine("Ecco la lista dei tuoi eventi:");
+Console.WriteLine(programma2.ToString());
+
+Console.Write("Inserisci una data per visualizzare gli eventi in quella data (formato gg/mm/aaaa): ");
+
+DateTime dataRichiesta = DateTime.Parse(Console.ReadLine());
+List<Evento> eventiData = programma2.EventiInData(dataRichiesta);
+
+Console.WriteLine("Eventi in data " + dataRichiesta.ToShortDateString() + ":");
+ProgrammaEventi.StampaListaEventi(eventiData);
+
+//  elimina tutti gli eventi 
+programma2.SvuotaEventi();
+Console.WriteLine("Tutti gli eventi sono stati eliminati dal programma.");
+
+Console.WriteLine(programma2.ToString());

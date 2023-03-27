@@ -48,6 +48,7 @@ namespace GestoreEventi
             return str;
         }
 
+
         public int NumeroEventi()
         {
             return Eventi.Count;
@@ -67,6 +68,23 @@ namespace GestoreEventi
             }
             return str;
         }
+
+        public static void StampaListaEventi(List<Evento> eventi)
+        {
+            if (eventi.Count == 0)
+            {
+                Console.WriteLine("Non ci sono eventi in questa data.");
+            }
+            else
+            {
+                foreach (Evento evento in eventi)
+                {
+                    Console.WriteLine("- " + evento.ToString());
+                }
+            }
+        }
     }
+
+
 
 }
