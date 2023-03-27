@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
+
 namespace GestoreEventi
 {
     public record Evento
@@ -95,7 +96,7 @@ namespace GestoreEventi
                     return data.ToString("dd/MM/yyyy") + " - " + titolo + " - " + " Posti massimi:" + maxCapacita + " Posti prenotati:" + postiPrenotati;
                     
                 }
-     
 
+       
     } 
 }
