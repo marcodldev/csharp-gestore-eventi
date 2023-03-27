@@ -7,23 +7,19 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GestoreEventi
 {
-    public class Evento
+    public record Evento
     {
         private string Titolo;
-      
+        private DateTime Data;
+        private int MaxCapacita;
+        private int PostiPrenotati;
 
-    /*    public Evento(string titolo, DateTime data, int maxCapacita)
+        public Evento(string titolo, DateTime data, int MaxCapacita)
         {
             this.titolo = titolo;
             this.data = data;
-            this.maxCapacita = maxCapacita;
-            this.postiPrenotati = 0;
-        } */
-
-        public Evento(string titolo, DateTime data)
-        {
-            this.titolo = titolo;
-            this.data = data;
+            this.maxCapacita = MaxCapacita;
+            PostiPrenotati = 0;
         }
 
         public string titolo
@@ -45,35 +41,35 @@ namespace GestoreEventi
 
         public DateTime data
         {
-            get { return data; }
+            get { return Data; }
             set
             {
                 if (value < DateTime.Today)
                     throw new ArgumentException("Seleziona una data valida.");
-                data = value;
+                Data = value;
             }
         }
 
-        /*
+        
                 public int maxCapacita {
-                    get { return maxCapacita;}
+                    get { return MaxCapacita; }
                     set
                     {
-                        if (maxCapacita < 0)
+                        if (MaxCapacita < 0)
                         {
                             throw new ArgumentException("La capacità massima non puo' essere inferiore a 0.");
                         }
                         else
                         {
-                            maxCapacita = value;
+                    MaxCapacita = value;
                         }
                     }
                 }
 
                 public int postiPrenotati
                 {
-                    get { return postiPrenotati; }
-                    private set { postiPrenotati = value; }
+                    get { return PostiPrenotati; }
+                    private set { PostiPrenotati = value; }
                 }
 
 
@@ -93,16 +89,13 @@ namespace GestoreEventi
                     }
                     postiPrenotati -= postiDaDisdire;
                 }
-
+   
                 public override string ToString()
                 {
-                    return data.ToString("dd/MM/yyyy") + " - " + titolo;
+                    return data.ToString("dd/MM/yyyy") + " - " + titolo + " - " + " Posti massimi:" + maxCapacita + " Posti prenotati:" + postiPrenotati;
+                    
                 }
-        */
-        public override string ToString()
-        {
-            return $"Titolo: {titolo}, Data: {data}";
-        }
+     
 
     } 
 }
